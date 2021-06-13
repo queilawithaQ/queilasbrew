@@ -85,7 +85,7 @@ module Homebrew
         require "rubocop"
       end
 
-      require "rubocops/all"
+      require "rubocops"
 
       args = %w[
         --force-exclusion
