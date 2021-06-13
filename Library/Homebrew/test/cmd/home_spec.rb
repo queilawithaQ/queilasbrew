@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 require "cmd/shared_examples/args_parse"
+require "support/lib/config"
 
 describe "brew home" do
   let(:testballhome_homepage) {
