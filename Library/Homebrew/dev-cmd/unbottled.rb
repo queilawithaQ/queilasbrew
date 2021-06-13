@@ -158,6 +158,10 @@ module Homebrew
 
     formulae.each do |f|
       name = f.name.downcase
+      if f.bottle_specification.tag?(@bottle_tag, no_older_versions: true)
+        puts "#{Tty.bold}#{Tty.green}#{name}#{Tty.reset}: already bottled" if any_named_args
+        next
+      end
 
       if f.disabled?
         puts "#{Tty.bold}#{Tty.green}#{name}#{Tty.reset}: formula disabled" if any_named_args
@@ -186,7 +190,11 @@ module Homebrew
 
             Version.new(MacOS::Xcode.latest_version(macos: macos_version)) >= r.version
           when ArchRequirement
-            r.arch == @bottle_tag.arch
+            arch = r.arch
+            arch = :intel if arch == :x86_64
+            arch = :arm64 if arch == :arm
+
+            arch == macos_version.arch
           else
             true
           end
@@ -204,11 +212,6 @@ module Homebrew
           "disabled"
         end
         puts "#{Tty.bold}#{Tty.red}#{name}#{Tty.reset}: bottle #{reason}" if any_named_args
-        next
-      end
-
-      if f.bottle_specification.tag?(@bottle_tag, no_older_versions: true)
-        puts "#{Tty.bold}#{Tty.green}#{name}#{Tty.reset}: already bottled" if any_named_args
         next
       end
 

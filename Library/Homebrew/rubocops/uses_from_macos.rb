@@ -77,7 +77,6 @@ module RuboCop
           bash
           cpio
           expect
-          git
           groff
           gzip
           openssl
