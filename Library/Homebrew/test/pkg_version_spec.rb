@@ -17,9 +17,7 @@ describe PkgVersion do
 
   specify "#==" do
     expect(described_class.parse("1.0_0")).to be == described_class.parse("1.0")
-    version_to_compare = described_class.parse("1.0_1")
-    expect(version_to_compare == described_class.parse("1.0_1")).to be true
-    expect(version_to_compare == described_class.parse("1.0_2")).to be false
+    expect(described_class.parse("1.0_1")).to be == described_class.parse("1.0_1")
   end
 
   describe "#>" do
