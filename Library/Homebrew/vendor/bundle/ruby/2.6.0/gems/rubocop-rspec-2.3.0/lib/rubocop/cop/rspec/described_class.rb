@@ -203,7 +203,7 @@ module RuboCop
             [name]
           elsif namespace.const_type?
             [*const_name(namespace), name]
-          elsif %i[lvar cbase send].include?(namespace.type)
+          elsif namespace.lvar_type? || namespace.cbase_type?
             [nil, name]
           end
         end
