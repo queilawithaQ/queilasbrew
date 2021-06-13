@@ -298,6 +298,7 @@ _brew_abv() {
       __brewcomp "
       --all
       --analytics
+      --bottle
       --cask
       --category
       --days
@@ -995,6 +996,7 @@ _brew_info() {
       __brewcomp "
       --all
       --analytics
+      --bottle
       --cask
       --category
       --days
@@ -1135,7 +1137,6 @@ _brew_install_bundler_gems() {
     -*)
       __brewcomp "
       --debug
-      --groups
       --help
       --quiet
       --verbose
@@ -1557,6 +1558,7 @@ _brew_pr_pull() {
       --keep-old
       --message
       --no-commit
+      --no-publish
       --no-upload
       --quiet
       --resolve
@@ -1586,6 +1588,7 @@ _brew_pr_upload() {
       --help
       --keep-old
       --no-commit
+      --no-publish
       --quiet
       --root-url
       --root-url-using
