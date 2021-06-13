@@ -32,24 +32,19 @@ module SystemConfig
       end
     end
 
-    sig { returns(Pathname) }
-    def homebrew_repo
-      HOMEBREW_REPOSITORY.dup.extend(GitRepositoryExtension)
-    end
-
     sig { returns(String) }
     def head
-      homebrew_repo.git_head || "(none)"
+      HOMEBREW_REPOSITORY.git_head || "(none)"
     end
 
     sig { returns(String) }
     def last_commit
-      homebrew_repo.git_last_commit || "never"
+      HOMEBREW_REPOSITORY.git_last_commit || "never"
     end
 
     sig { returns(String) }
     def origin
-      homebrew_repo.git_origin || "(none)"
+      HOMEBREW_REPOSITORY.git_origin || "(none)"
     end
 
     sig { returns(String) }
